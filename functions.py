@@ -149,16 +149,18 @@ def AStarProcedure(g, coord):
             return cities
         
         unvisited_nodes = set([i for i in range(len(g))]) - visited
+        unvisited_nodes.add(0)
+        print(unvisited_nodes)
         subgraph = [coord[i] for i in unvisited_nodes]
-        min_mst = minimum_spanning_tree(subgraph)
+        min_mst = minimum_spanning_tree_prim(subgraph)
 
         for distance, neighbor in g[current_node]:
             if neighbor not in visited:
                 value_h = h_calc(neighbor, g, unvisited_nodes, min_mst)
                 heapq.heappush(heap, (distance+value_h, neighbor, cities[:]))
-        return None
+    return None
 
-point_list = [(0, 0), (1, 2), (2, 2),(-1,-1), (0,1)]
+point_list = [(0, 0), (1, 2), (4,5), (-1,-1)]
 minimum_spanning_tree = minimum_spanning_tree_prim(point_list)
 
 points2 = [(0,0),(0,1), (0,2)]
@@ -167,9 +169,7 @@ g= createGraph(point_list)
 
 print(AStarProcedure(g, point_list))
 
-points = [point_list[i] for i in range(1, 5)]
 
-print(minimum_spanning_tree_prim(points))
 
 #print(h_calc(0, g, [i for i in range(1,5)], 3))
 
