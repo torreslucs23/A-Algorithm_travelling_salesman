@@ -1,5 +1,8 @@
-Derecricao problema:
-1. as cidades serao pontos iguais a atividade anterior e sera um grafo conectado
-2. distancia entre as cidades é euclidiana
-3. estado de busca se refere a apenas uma cidade, ao inves de um circuito
-4. 
+Para rodar o problema, escreva as entradas no arquivo entries.txt igual foi especificado no trabalho
+
+esteja com o python 3+ instalado e faça:
+
+python main.py
+
+com isso, os resultados serão listas com as sequencias de coordenadas, as coordenadas e o custo.
+Será exibido no propri terminal

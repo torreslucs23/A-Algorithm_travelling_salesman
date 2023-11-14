@@ -136,10 +136,12 @@ def AStarProcedure(g, coord):
     while heap:
         #this pop the priority element from priority queue
         cost, current_node, cities = heapq.heappop(heap)
+        
 
         #checks if the node has been visited and skip
         if current_node in visited:
             continue
+
 
         cities.append(current_node)
         visited.add(current_node)
@@ -150,7 +152,7 @@ def AStarProcedure(g, coord):
         
         unvisited_nodes = set([i for i in range(len(g))]) - visited
         unvisited_nodes.add(0)
-        print(unvisited_nodes)
+
         subgraph = [coord[i] for i in unvisited_nodes]
         min_mst = minimum_spanning_tree_prim(subgraph)
 
@@ -160,20 +162,11 @@ def AStarProcedure(g, coord):
                 heapq.heappush(heap, (distance+value_h, neighbor, cities[:]))
     return None
 
-point_list = [(0, 0), (1, 2), (4,5), (-1,-1)]
-minimum_spanning_tree = minimum_spanning_tree_prim(point_list)
 
-points2 = [(0,0),(0,1), (0,2)]
+def generateResult(points, coord):
+    acc = 0
+    for i in range(len(coord)):
+        acc+=calculateDistance(coord[points[i]], coord[points[i+1]])
+    return acc
 
-g= createGraph(point_list)
-
-print(AStarProcedure(g, point_list))
-
-
-
-#print(h_calc(0, g, [i for i in range(1,5)], 3))
-
-#print(AStarProcedure(g))
-print(minimum_spanning_tree)
-
-print(minimum_spanning_tree_prim(points2))
+#
