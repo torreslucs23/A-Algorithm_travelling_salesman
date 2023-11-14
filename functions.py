@@ -24,28 +24,6 @@ def getCoordenates(entry):
 
     return coordenates
 
-#aplies the operator 1
-def operator1(positions, id1, id2):
-    x = positions[id1]
-    positions[id1] = positions[id2]
-    positions[id2] = x
-
-    return positions
-
-#aplies the operator 2
-def operator2(positions, id1, id2):
-    new_positions = []
-
-    for i in range(id1):
-        new_positions.append(positions[i])
-
-    for i in range(id2, id1-1, -1):
-        new_positions.append(positions[i])
-
-    for i in range(id2+1, len(positions)):
-        new_positions.append(positions[i])
-    
-    return new_positions
 
 
 #calculate the cost of a sequence
@@ -151,7 +129,7 @@ def AStarProcedure(g, coord):
             return cities
         
         unvisited_nodes = set([i for i in range(len(g))]) - visited
-        unvisited_nodes.add(0)
+        unvisited_nodes.add(current_node)
 
         subgraph = [coord[i] for i in unvisited_nodes]
         min_mst = minimum_spanning_tree_prim(subgraph)
@@ -164,7 +142,7 @@ def AStarProcedure(g, coord):
 
 
 def generateResult(points, coord):
-    acc = 0
+    acc = 0.0
     for i in range(len(coord)):
         acc+=calculateDistance(coord[points[i]], coord[points[i+1]])
     return acc

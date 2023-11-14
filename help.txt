@@ -5,4 +5,6 @@ esteja com o python 3+ instalado e faça:
 python main.py
 
 com isso, os resultados serão listas com as sequencias de coordenadas, as coordenadas e o custo.
-Será exibido no propri terminal
+Será exibido no propri terminal.
+
+não deixe espaço em branco no final do arquivo entries
